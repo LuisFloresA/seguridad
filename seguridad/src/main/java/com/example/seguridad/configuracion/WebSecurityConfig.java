@@ -26,8 +26,13 @@ public class WebSecurityConfig {
                 {
                     authorize.requestMatchers(antMatcher("/")).permitAll();
                     authorize.requestMatchers(antMatcher("/menu")).permitAll();
-                    authorize.requestMatchers(antMatcher("/usuario")).hasRole("USER");
-                    authorize.requestMatchers(antMatcher("/admin")).hasRole("ADMIN");
+                    authorize.requestMatchers(antMatcher("/contactView")).hasRole("CLIENTE");
+                    authorize.requestMatchers(antMatcher("/createTrainingView")).hasRole("CLIENTE");
+                    authorize.requestMatchers(antMatcher("/listTrainingView")).hasRole("CLIENTE");
+                    authorize.requestMatchers(antMatcher("/editUsersView")).hasRole("ADMINISTRATIVO");
+                    authorize.requestMatchers(antMatcher("/paysView")).hasRole("ADMINISTRATIVO");
+                    authorize.requestMatchers(antMatcher("/visitView")).hasRole("PROFESIONAL");
+
                     authorize.anyRequest().authenticated();
                 })
                 .formLogin(Customizer.withDefaults())
